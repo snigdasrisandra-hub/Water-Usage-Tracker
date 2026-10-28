@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c766e">
+  <title>WaterWise — Water Usage Tracker</title>
+  <meta name="description" content="Track daily water usage, spot trends, and build mindful water-saving habits.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="WaterWise home"><span class="brand-mark">≈</span><span>Water<span class="brand-light">Wise</span></span></a>
+    <nav><a href="#dashboard">Dashboard</a><a href="#entries">Usage log</a><a href="#tips">Water-saving tips</a></nav>
+    <a class="nav-cta" href="#add-entry">+ Log water</a>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="pulse"></span> SMALL HABITS. BIG IMPACT.</span>
+        <h1>Every drop<br>counts<span class="accent">.</span></h1>
+        <p>Understand your water habits, track daily usage, and make every litre go further.</p>
+        <a class="primary-btn" href="#add-entry">Start tracking <span aria-hidden="true">↗</span></a>
+        <div class="hero-note"><span class="tiny-check">✓</span> Simple tracking for mindful living</div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a water drop and waves">
+        <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+        <div class="drop"><div class="drop-shine"></div><span>H₂O</span></div>
+        <div class="wave wave-back"></div><div class="wave wave-front"></div>
+        <div class="float-tag tag-top"><span class="tag-icon">✦</span><span><b>Save a little</b><small>Every day matters</small></span></div>
+        <div class="float-tag tag-bottom"><span class="mini-drop">●</span><span><b>Track your impact</b><small>One entry at a time</small></span></div>
+      </div>
+    </section>
+    <section id="dashboard" class="section dashboard-section">
+      <div class="section-heading"><div><span class="eyebrow">YOUR OVERVIEW</span><h2>Water at a glance</h2></div><span id="connection-status" class="status"><i></i> Checking connection…</span></div>
+      <div class="stats-grid">
+        <article class="stat-card stat-main"><div class="stat-top"><span>Today's usage</span><span class="stat-icon">◉</span></div><div class="stat-value"><strong id="today-total">—</strong><span>litres</span></div><div class="stat-foot"><span id="today-entry-count">Loading entries…</span><span class="stat-bar"><i></i></span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>This week</span><span class="stat-icon pale">↗</span></div><div class="stat-value"><strong id="week-total">—</strong><span>litres</span></div><p class="stat-caption">Total logged in the last 7 days</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Daily average</span><span class="stat-icon pale">⌁</span></div><div class="stat-value"><strong id="daily-average">—</strong><span>litres</span></div><p class="stat-caption">Based on your last 7 days</p></article>
+        <article class="stat-card"><div class="stat-top"><span>Entries recorded</span><span class="stat-icon pale">▤</span></div><div class="stat-value"><strong id="entry-count">—</strong><span>entries</span></div><p class="stat-caption">Your water-use log</p></article>
+      </div>
+      <div class="insight-row"><div class="insight-icon">✧</div><div><b>A little awareness goes a long way</b><p>Log activities consistently to discover where your water is going and where you could save.</p></div></div>
+    </section>
+    <section id="add-entry" class="section content-grid">
+      <div class="form-panel">
+        <span class="eyebrow">ADD TO YOUR LOG</span><h2 id="form-title">Log water usage</h2><p class="muted">Record an activity to keep your daily total up to date.</p>
+        <form id="usage-form">
+          <input type="hidden" id="entry-id">
+          <label for="activity">Activity</label>
+          <select id="activity" required>
+            <option value="">Choose an activity</option><option>Shower</option><option>Bath</option><option>Brushing teeth</option><option>Toilet flush</option><option>Laundry</option><option>Dishwashing</option><option>Cooking</option><option>Drinking</option><option>Cleaning</option><option>Gardening</option><option>Other</option>
+          </select>
+          <div class="form-row"><div><label for="amount">Water used (litres)</label><input id="amount" type="number" min="0.1" max="100000" step="0.1" placeholder="e.g. 35" required></div><div><label for="usage-date">Date</label><input id="usage-date" type="date" required></div></div>
+          <label for="notes">Notes <span class="optional">Optional</span></label><textarea id="notes" maxlength="500" rows="3" placeholder="Add a note about this activity…"></textarea>
+          <div id="form-message" class="form-message" role="status" aria-live="polite"></div>
+          <div class="form-actions"><button id="save-btn" class="primary-btn" type="submit">Save entry <span>↗</span></button><button id="cancel-edit" class="secondary-btn hidden" type="button">Cancel edit</button></div>
+        </form>
+      </div>
+      <aside class="guide-panel">
+        <div class="guide-top"><span class="eyebrow">QUICK GUIDE</span><span class="guide-spark">✦</span></div>
+        <h3>Make every litre count.</h3><p>Estimates help you get started. Enter your actual usage when you have it.</p>
+        <div class="estimate"><span class="estimate-icon">◌</span><span><b>Quick shower</b><small>About 40–60 L</small></span></div>
+        <div class="estimate"><span class="estimate-icon">⌁</span><span><b>Washing dishes</b><small>About 15–30 L</small></span></div>
+        <div class="estimate"><span class="estimate-icon">◍</span><span><b>Laundry load</b><small>About 50–100 L</small></span></div>
+        <div class="guide-foot">Estimates vary by equipment, duration, and habits.</div>
+      </aside>
+    </section>
+    <section id="entries" class="section log-section">
+      <div class="section-heading"><div><span class="eyebrow">YOUR HISTORY</span><h2>Recent usage</h2><p class="muted">Search, filter, edit, or remove an entry.</p></div><button id="refresh-btn" class="secondary-btn" type="button">↻ Refresh</button></div>
+      <div class="toolbar"><div class="search-wrap"><span>⌕</span><input id="search-input" type="search" placeholder="Search activity or notes…" aria-label="Search usage entries"></div><select id="activity-filter" aria-label="Filter by activity"><option value="">All activities</option><option>Shower</option><option>Bath</option><option>Brushing teeth</option><option>Toilet flush</option><option>Laundry</option><option>Dishwashing</option><option>Cooking</option><option>Drinking</option><option>Cleaning</option><option>Gardening</option><option>Other</option></select><select id="sort-filter" aria-label="Sort entries"><option value="newest">Newest first</option><option value="oldest">Oldest first</option><option value="highest">Highest usage</option><option value="lowest">Lowest usage</option></select></div>
+      <div id="list-message" class="list-message" role="status"></div>
+      <div class="table-wrap"><table><thead><tr><th>Activity</th><th>Date</th><th>Water used</th><th>Notes</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="entries-body"></tbody></table></div>
+      <div id="empty-state" class="empty-state hidden"><div class="empty-illustration">≈</div><h3>No entries yet</h3><p>Add your first water-use entry to start tracking.</p><a href="#add-entry" class="secondary-btn">Add first entry</a></div>
+      <div class="log-footer"><span id="result-count">0 entries</span><span>All amounts shown in litres (L)</span></div>
+    </section>
+    <section id="tips" class="section tips-section">
+      <div class="section-heading"><div><span class="eyebrow">SMALL CHANGES, REAL RESULTS</span><h2>Water-saving ideas</h2></div></div>
+      <div class="tips-grid"><article class="tip-card"><span class="tip-number">01</span><div class="tip-icon">◌</div><h3>Shorten your shower</h3><p>Try reducing shower time by a minute or two and track the difference.</p></article><article class="tip-card"><span class="tip-number">02</span><div class="tip-icon">⌁</div><h3>Turn off the tap</h3><p>Close the tap while brushing your teeth or scrubbing dishes.</p></article><article class="tip-card"><span class="tip-number">03</span><div class="tip-icon">✧</div><h3>Reuse when practical</h3><p>Use suitable leftover water for plants instead of pouring it away.</p></article></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="#"><span class="brand-mark">≈</span><span>Water<span class="brand-light">Wise</span></span></a><p>Build mindful habits, one drop at a time.</p><span>Water Usage Tracker · Student project</span></footer>
+</body>
+</html>
